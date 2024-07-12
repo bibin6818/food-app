@@ -1,0 +1,29 @@
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div *ngFor="let recipie of allRecipies | paginate: { itemsPerPage:4, currentPage: p, totalItems: 30} | search:searchKey">
+                <div class="card">
+                    <!-- Product image-->
+                    <img class="card-img-top" [src]="recipie.image" alt="..." />
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder"> </h5>
+                            <!-- Product price-->
+                           <h2> {{recipie.name}}</h2>
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <h6 class="text-danger">Cooking Time: {{recipie.prepTimeMinutes}} Minutes</h6>
+                        <h6 class="text-primary">Serverings: {{recipie.servings}} persons</h6>
+                      <h5>Ingredients:</h5> <p>{{recipie.ingredients}}</p>
+                      <h5>Instructions:</h5> <p>{{recipie.instructions}}</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="mt-2 text-center"> <pagination-controls (pageChange)="p = $event"></pagination-controls></div>
+</section>
